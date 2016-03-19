@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BiztalkPartySettings>
+  <Party>
+    
+    <Name>PartnerB_Passthrough</Name>
+ 
+
+    <BusinessProfiles>
+      <BusinessProfile>
+        <Name>PartnerB_Passthrough_Profile</Name>
+        
+        <Agreements>
+          <Agreement>
+            <Name>Agreement1</Name>
+            <Protocol>X12</Protocol>
+            <FirstParty>
+              <Name>PartnerB_Passthrough</Name>
+              <BusinessProfileName>PartnerB_Passthrough_Profile</BusinessProfileName>
+              <!--<Identity>
+                <IdentityQualifier>1</IdentityQualifier>
+                <IdentityDesc>D-U-N-S (Dun &amp; Bradstreet)</IdentityDesc>
+                <IdentityValue>6560359381</IdentityValue>
+              </Identity>-->
+            </FirstParty>
+            <SecondParty>
+              <Name>PartnerA</Name>
+              <BusinessProfileName>PartnerA_Profile</BusinessProfileName>
+              <!--<Identity>
+                <IdentityQualifier>1</IdentityQualifier>
+                <IdentityDesc>D-U-N-S (Dun &amp; Bradstreet)</IdentityDesc>
+                <IdentityValue>081466849T</IdentityValue>
+              </Identity>-->
+
+            </SecondParty>
+
+            <SecondPartyToFirstPartyOneWayAgreement>
+              <!--<AgreementAliases>
+                <AgreementAlias>
+                  <AliasKey>DestinationPartyName</AliasKey>
+                  <AliasValue>PartnerB</AliasValue>
+                </AgreementAlias>
+              </AgreementAliases>
+               <SendPorts>
+                  <Sendport>
+                    <Name>Send_LoadPlan_EDI_To_PartnerB_ICOE</Name>
+                  </Sendport>
+                </SendPorts>
+              <InterchangeSettings>
+
+                <CharacterSetAndSeparators>
+                  <DataElementSeparator>126</DataElementSeparator>
+                  <ComponentElementSeparator>124</ComponentElementSeparator>
+                  <SegmentTerminator>18</SegmentTerminator>
+                </CharacterSetAndSeparators>
+               
+
+              </InterchangeSettings>-->
+              <!--<TransactionSetSettings>
+                --><!--<Envelopes>
+                  <Envelope>
+                    <TransactionType>204</TransactionType>
+                    <Version>00401</Version>
+                    <TargetNamespace>http://schemas.PartnerA.com/BizTalk/EDI/X12/2006</TargetNamespace>
+                    <GS1>SM</GS1>
+                    <GS2>086661469</GS2>
+                    <GS3>656035938</GS3>
+                    <GS4>YYMMDD</GS4>
+                    <GS5>HHMM</GS5>
+                    <GS7>X</GS7>
+                    <GS8>004010</GS8>
+                  </Envelope>
+
+                </Envelopes>--><!--
+                <SchemaOverides>
+                  <SchemaOveride>
+                    <TransactionType>204</TransactionType>
+                    <Version>00401</Version>
+                    <TargetNamespace>http://schemas.PartnerA.com/BizTalk/EDI/X12/2006</TargetNamespace>
+                    <GS2>086661469</GS2>
+                  </SchemaOveride>
+                </SchemaOverides>
+              </TransactionSetSettings>-->
+              <Batches>
+                <Batch>
+                  <Name>Batch1</Name>
+                  <FilterGroups>
+                    <FilterGroup>
+                      <Filters>
+                        <Filter>
+                          <FilterProperty>BTS.ReceivePortName</FilterProperty>
+                          <FilterOperator>=</FilterOperator>
+                          <FilterValue>TestReceivePort</FilterValue>
+                        </Filter>
+                        <Filter>
+                          <FilterProperty>BTS.ReceivePortName</FilterProperty>
+                          <FilterOperator>=</FilterOperator>
+                          <FilterValue>TestReceivePort4</FilterValue>
+                        </Filter>
+                      </Filters>
+                    </FilterGroup>
+                  </FilterGroups>
+                  <Scheduler>
+                    <TimeIntervalInMinutes></TimeIntervalInMinutes>
+
+                  </Scheduler>
+                </Batch>
+                <Batch>
+                  <Name>Batch2</Name>
+                  <FilterGroups>
+                    <FilterGroup>
+                      <Filters>
+                        <Filter>
+                          <FilterProperty>BTS.ReceivePortName</FilterProperty>
+                          <FilterOperator>=</FilterOperator>
+                          <FilterValue>TestReceivePort</FilterValue>
+                        </Filter>
+                          <Filter>
+                            <FilterProperty>BTS.ReceivePortName</FilterProperty>
+                            <FilterOperator>=</FilterOperator>
+                            <FilterValue>TestReceivePort4</FilterValue>
+                        </Filter>
+                      </Filters>
+                    </FilterGroup>
+                  </FilterGroups>
+                  <Scheduler>
+                    <TimeIntervalInMinutes></TimeIntervalInMinutes>
+                    
+                  </Scheduler>
+                </Batch>
+              </Batches>
+            </SecondPartyToFirstPartyOneWayAgreement>
+          </Agreement>
+          <!--<Agreement>
+            <Name>AS2_PartnerB_PartnerA_Agreement</Name>
+            <Protocol>AS2</Protocol>
+            <FirstParty>
+              <Name>PartnerB</Name>
+              <BusinessProfileName>DefaultProfile</BusinessProfileName>
+              <Identity>
+                <IdentityQualifier>AS2Identity</IdentityQualifier>
+                <IdentityDesc>AS2Identity</IdentityDesc>
+                <IdentityValue>PartnerBAS2Id</IdentityValue>
+              </Identity>
+            </FirstParty>
+            <SecondParty>
+              <Name>PartnerA</Name>
+              <BusinessProfileName>DefaultProfile</BusinessProfileName>
+              <Identity>
+                <IdentityQualifier>AS2Identity</IdentityQualifier>
+                <IdentityDesc>AS2Identity</IdentityDesc>
+                <IdentityValue>MSEDSYSTEMS-EDI</IdentityValue>
+              </Identity>
+
+            </SecondParty>
+
+            <SecondPartyToFirstPartyOneWayAgreement>
+
+              <SendPorts>
+                <Sendport>
+                  <Name>Send_LoadPlan_EDI_To_PartnerB_ICOE</Name>
+                </Sendport>
+                <Sendport>
+                  <Name>Send_LoadPlan_Xml_To_PartnerB_ICOE</Name>
+                </Sendport>
+              </SendPorts>
+            <MDNAcknowledgementSettings>
+              <SigningAlgorithm>MD5</SigningAlgorithm>
+            <ReceiptDeliveryOptionUrl>HTTPS://TESTURL</ReceiptDeliveryOptionUrl>
+            </MDNAcknowledgementSettings>
+            </SecondPartyToFirstPartyOneWayAgreement>
+
+          </Agreement>-->
+        </Agreements>
+      </BusinessProfile>
+
+    </BusinessProfiles>
+  </Party>
+ 
+</BiztalkPartySettings>
